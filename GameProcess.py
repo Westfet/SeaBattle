@@ -18,23 +18,19 @@ def greet():
 
 
 class GameProcess:
-    # константы для поля 6*6
-    lens = [3, 2, 2, 1, 1, 1, 1]
-    size = 6
-
-    def __init__(self, size, lens):
+    def __init__(self, size=6):
         self.size = size
         player = self.random_board()
         computer = self.random_board()
         computer.hidden = True
         self.ai = AI(computer, player)
         self.user = User(player, computer)
-        self.lens = lens
 
     def try_board(self):
+        lens = [3, 2, 2, 1, 1, 1, 1]
         board = Board(size=self.size)
         attempts = 0
-        for l in self.lens:
+        for l in lens:
             while True:
                 attempts += 1
                 if attempts > 2000:
